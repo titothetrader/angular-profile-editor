@@ -1,150 +1,154 @@
-<h1>{{ title }}</h1>
-
-<div>
-  <form #profileForm="ngForm" (ngSubmit)="saveChanges()">
-    <table>
-      <thead>
-        <tr>
-          <th><h2>User Information</h2></th>
-          <th *ngIf="displayEdit"><h2>Confirm</h2></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <mat-form-field appearance="fill">
-              <mat-label>Name:</mat-label>
-              <input
-                matInput
-                type="text"
-                class="form-control"
-                id="name"
-                [(ngModel)]="formUser.name"
-                name="name"
-                placeholder="Enter your name..."
-                disabled="{{ !displayEdit }}"
-                required
-              />
-            </mat-form-field>
-          </td>
-          <td>
-            <span *ngIf="displayEdit">Confirm Name: {{ formUser.name }}</span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field appearance="fill">
-              <mat-label>Age:</mat-label>
-              <input
-                matInput
-                type="number"
-                class="form-control"
-                id="age"
-                [(ngModel)]="formUser.age"
-                name="age"
-                placeholder="Enter your age..."
-                disabled="{{ !displayEdit }}"
-                required
-              />
-            </mat-form-field>
-          </td>
-          <td>
-            <span *ngIf="displayEdit">Confirm Age: {{ formUser.age }}</span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field appearance="fill">
-              <mat-label>Favorite Color:</mat-label>
-              <input
-                matInput
-                type="text"
-                class="form-control"
-                id="age"
-                [(ngModel)]="formUser.favoriteColor"
-                name="favoriteColor"
-                placeholder="Enter your favorite color..."
-                disabled="{{ !displayEdit }}"
-                required
-              />
-            </mat-form-field>
-          </td>
-          <td>
-            <span *ngIf="displayEdit"
-              >Confirm Color: {{ formUser.favoriteColor }}</span
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field appearance="fill">
-              <mat-label>Favorite Animal:</mat-label>
-              <mat-select
-                name="favoriteAnimal"
-                id="favoriteAnimal"
-                class="form-control"
-                [(value)]="formUser.favoriteAnimal"
-                disabled="{{ !displayEdit }}"
-                required
+<div class="form-container">
+  <mat-card class="card">
+    <div class="title">
+      <mat-icon class="icon" fontIcon="account_circle"></mat-icon>
+      <h1>{{ title }}</h1>
+    </div>
+    <form #profileForm="ngForm" (ngSubmit)="saveChanges()">
+      <table class="form">
+        <thead>
+          <tr>
+            <th><h2>User Information</h2></th>
+            <th *ngIf="displayEdit"><h2>Confirm</h2></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <mat-form-field appearance="fill">
+                <mat-label>Name:</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  [(ngModel)]="formUser.name"
+                  name="name"
+                  placeholder="Enter your name..."
+                  disabled="{{ !displayEdit }}"
+                  required
+                />
+              </mat-form-field>
+            </td>
+            <td>
+              <span *ngIf="displayEdit">Confirm Name: {{ formUser.name }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field appearance="fill">
+                <mat-label>Age:</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  class="form-control"
+                  id="age"
+                  [(ngModel)]="formUser.age"
+                  name="age"
+                  placeholder="Enter your age..."
+                  disabled="{{ !displayEdit }}"
+                  required
+                />
+              </mat-form-field>
+            </td>
+            <td>
+              <span *ngIf="displayEdit">Confirm Age: {{ formUser.age }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field appearance="fill">
+                <mat-label>Favorite Color:</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  class="form-control"
+                  id="age"
+                  [(ngModel)]="formUser.favoriteColor"
+                  name="favoriteColor"
+                  placeholder="Enter your favorite color..."
+                  disabled="{{ !displayEdit }}"
+                  required
+                />
+              </mat-form-field>
+            </td>
+            <td>
+              <span *ngIf="displayEdit"
+                >Confirm Color: {{ formUser.favoriteColor }}</span
               >
-                <mat-option
-                  *ngFor="let animal of animals"
-                  [value]="animal"
-                  selected
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field appearance="fill">
+                <mat-label>Favorite Animal:</mat-label>
+                <mat-select
+                  name="favoriteAnimal"
+                  id="favoriteAnimal"
+                  class="form-control"
+                  [(value)]="formUser.favoriteAnimal"
+                  disabled="{{ !displayEdit }}"
+                  required
                 >
-                  {{ animal }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </td>
-          <td>
-            <span *ngIf="displayEdit"
-              >Confirm Animal: {{ formUser.favoriteAnimal }}</span
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-checkbox
-              name="stillAlive"
-              id="stillAlive"
-              class="form-check-input"
-              [(ngModel)]="formUser.stillAlive"
-              disabled="{{ !displayEdit }}"
-            >
-              Still Alive:
-            </mat-checkbox>
-          </td>
-          <td>
-            <span *ngIf="displayEdit"
-              >Confirm Alive: {{ formUser.stillAlive }}</span
-            >
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button
-              type="button"
-              (click)="toggleEdit()"
-              mat-raised-button
-              color="secondary"
-            >
-              Toggle Edit
-            </button>
-          </td>
-          <td>
-            <button
-              *ngIf="displayEdit"
-              type="submit"
-              [disabled]="!profileForm.valid"
-              mat-raised-button
-              color="primary"
-            >
-              Submit
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
+                  <mat-option
+                    *ngFor="let animal of animals"
+                    [value]="animal"
+                    selected
+                  >
+                    {{ animal }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>
+              <span *ngIf="displayEdit"
+                >Confirm Animal: {{ formUser.favoriteAnimal }}</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-checkbox
+                name="stillAlive"
+                id="stillAlive"
+                class="form-control"
+                [(ngModel)]="formUser.stillAlive"
+                disabled="{{ !displayEdit }}"
+              >
+                Still Alive:
+              </mat-checkbox>
+            </td>
+            <td>
+              <span *ngIf="displayEdit"
+                >Confirm Alive: {{ formUser.stillAlive }}</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button
+                type="button"
+                (click)="toggleEdit()"
+                mat-raised-button
+                color="secondary"
+              >
+                Toggle Edit
+              </button>
+            </td>
+            <td>
+              <button
+                *ngIf="displayEdit"
+                type="submit"
+                [disabled]="!profileForm.valid"
+                mat-raised-button
+                color="primary"
+              >
+                Submit
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </mat-card>
 </div>

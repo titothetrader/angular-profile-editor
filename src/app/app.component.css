@@ -1,0 +1,25 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  background-color: rgb(2, 139, 252);
+  padding: 50px;
+  color: white;
+}
+
+.card {
+  text-align: center;
+  margin-top: 10vh;
+}
+
+.form {
+  width: 50vw;
+  margin-top: 5vh;
+}
+
+.icon {
+  margin: 20px;
+}
