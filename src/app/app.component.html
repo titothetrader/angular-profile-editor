@@ -31,7 +31,7 @@
               </mat-form-field>
             </td>
             <td>
-              <span *ngIf="displayEdit">Confirm Name: {{ formUser.name }}</span>
+              <span *ngIf="displayEdit">Confirm Name: {{ user.name }}</span>
             </td>
           </tr>
           <tr>
@@ -52,7 +52,7 @@
               </mat-form-field>
             </td>
             <td>
-              <span *ngIf="displayEdit">Confirm Age: {{ formUser.age }}</span>
+              <span *ngIf="displayEdit">Confirm Age: {{ user.age }}</span>
             </td>
           </tr>
           <tr>
@@ -102,7 +102,7 @@
             </td>
             <td>
               <span *ngIf="displayEdit"
-                >Confirm Animal: {{ formUser.favoriteAnimal }}</span
+                >Confirm Animal: {{ user.favoriteAnimal }}</span
               >
             </td>
           </tr>
@@ -120,7 +120,7 @@
             </td>
             <td>
               <span *ngIf="displayEdit"
-                >Confirm Alive: {{ formUser.stillAlive }}</span
+                >Confirm Alive: {{ user.stillAlive }}</span
               >
             </td>
           </tr>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { User } from './interfaces/user';
 
 @Component({
@@ -10,7 +9,7 @@ import { User } from './interfaces/user';
 export class AppComponent {
   title = 'Profile Editor';
 
-  formUser: User = {
+  user: User = {
     name: 'Churro',
     age: 7,
     favoriteColor: 'Purple',
@@ -18,9 +17,19 @@ export class AppComponent {
     stillAlive: true,
   };
 
+  formUser: User = { ...this.user };
+
   animals: string[] = ['Dogs', 'Cats', 'Birds', 'Fishes', 'Horses', 'Penguins'];
 
-  users: User[] = [];
+  users: User[] = [
+    {
+      name: 'Churro',
+      age: 7,
+      favoriteColor: 'Purple',
+      favoriteAnimal: 'Cats',
+      stillAlive: true,
+    },
+  ];
 
   displayEdit: boolean = false;
 
@@ -30,6 +39,7 @@ export class AppComponent {
 
   saveChanges() {
     this.toggleEdit();
+    this.user = { ...this.formUser };
     this.users.push(this.formUser);
   }
 }
